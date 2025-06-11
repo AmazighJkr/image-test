@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Path Test Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background: url('./images/vm.jpg') center/cover no-repeat;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Path Test Project</h1>
+        
+        <div class="test-section">
+            <h3>Test 1: Logo Image (./images/logo-green.png)</h3>
+            <img src="./images/logo-green.png" alt="Logo" class="logo" onerror="this.parentElement.className += ' error'; this.style.display='none';" onload="this.parentElement.className += ' success';">
+            <p>If you see the logo above, the relative path is working correctly.</p>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 2: Background Image (./images/vm.jpg)</h3>
+            <p>Check the header section above - it should have a background image.</p>
+        </div>
+
+        <div class="test-section">
+            <h3>File Structure Expected:</h3>
+            <pre>
+your-project/
+├── main.html (this file)
+└── images/
+    ├── logo-green.png
+    └── vm.jpg
+            </pre>
+        </div>
+
+        <div class="test-section">
+            <h3>Deployment Instructions:</h3>
+            <ol>
+                <li>Create a new GitHub repository</li>
+                <li>Upload this main.html file to the root</li>
+                <li>Create an 'images' folder in the root</li>
+                <li>Upload your logo-green.png and vm.jpg to the images folder</li>
+                <li>Connect the repository to Render.com as a static site</li>
+                <li>Deploy and test</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Log any image loading errors to console
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                console.error('Image failed to load:', e.target.src);
+            }
+        });
+    </script>
+</body>
+</html>
